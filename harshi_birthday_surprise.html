@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Harshi 💌</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI', cursive;
+  background:linear-gradient(135deg,#ffd6e8,#ffe9f3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+}
+
+.hidden{display:none;}
+
+h2{color:#ff4f9a;}
+
+.letter{
+  width:180px;
+  height:120px;
+  background:#ff99c8;
+  border-radius:15px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+}
+
+.cake{
+  width:200px;
+  height:120px;
+  background:#5b3a29;
+  border-radius:20px 20px 10px 10px;
+  position:relative;
+  margin:auto;
+}
+
+.sprinkles{
+  position:absolute;
+  width:100%;
+  height:30px;
+  top:-10px;
+  background:repeating-linear-gradient(
+    45deg,
+    red 0px 6px,
+    yellow 6px 12px,
+    cyan 12px 18px,
+    pink 18px 24px
+  );
+  border-radius:20px;
+}
+
+.candle{
+  width:12px;
+  height:45px;
+  background:white;
+  position:absolute;
+  top:-45px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.flame{
+  width:16px;
+  height:20px;
+  background:orange;
+  border-radius:50%;
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  animation:flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker{
+  from{opacity:0.7;}
+  to{opacity:1;}
+}
+
+button{
+  margin-top:15px;
+  padding:10px 18px;
+  border:none;
+  border-radius:10px;
+  background:#ff4f9a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#message{
+  margin-top:20px;
+  max-width:340px;
+  color:#6b0044;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stage1">
+  <h2>Scan & Tap the Letter 💌</h2>
+  <div class="letter" onclick="openLetter()">❤️</div>
+</div>
+
+<div id="stage2" class="hidden">
+  <h2>Make a wish ✨</h2>
+
+  <div class="cake">
+    <div class="sprinkles"></div>
+    <div class="candle">
+      <div id="flame" class="flame"></div>
+    </div>
+  </div>
+
+  <h3 id="count">Blow it 🎂</h3>
+</div>
+
+<p id="message" class="hidden">
+hello harshi baby , its your loved one saanvi , sorry for wishing you a bit late but it better to be late rather than never anyways , happiest birthday sweetie ! Thankyou for being with me , accepting me with my insecurities and faults and thankyou for healing something you never ever broke ! I love you alot , alot and alot ! And i will be loving you forever and ever and ever no matter how the situation goes ! I could never love anyone the way i love you and there's so many things to tell you about yourself but can't adjust everything here. And last but not the least , may you grow stronger , younger and charming .
+Happiest birthday once again !!
+From 
+Saanvi 💌🎀
+</p>
+
+<script>
+function openLetter(){
+  document.getElementById('stage1').classList.add('hidden');
+  document.getElementById('stage2').classList.remove('hidden');
+  startCountdown();
+}
+
+function startCountdown(){
+  let count = 5;
+  let counter = document.getElementById('count');
+
+  let interval = setInterval(()=>{
+    counter.innerText = "Blow it 🎂  " + count;
+    count--;
+
+    if(count < 0){
+      clearInterval(interval);
+      document.getElementById('flame').style.display='none';
+      counter.innerText="✨ Candle Blown ✨";
+      document.getElementById('message').classList.remove('hidden');
+    }
+  },1000);
+}
+</script>
+
+</body>
+</html>
